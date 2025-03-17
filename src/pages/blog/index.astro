@@ -1,0 +1,12 @@
+---
+import Page from "~/layouts/Page.astro";
+import BlogPostList from "~/components/lists/BlogPostList.astro";
+---
+
+<Page
+  title="Post index"
+  description="A list of all my blog posts."
+  icon="fa-solid fa-blog"
+>
+  <BlogPostList collection="blog" />
+</Page>

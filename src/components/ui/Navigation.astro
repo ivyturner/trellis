@@ -1,0 +1,51 @@
+---
+const headerLinks = [
+  {
+    label: "About",
+    href: "/about",
+    icon: "fa-solid fa-user", // font awesome css class
+  },
+  {
+    label: "Projects",
+    href: "/projects",
+    icon: "fa-solid fa-folder",
+  },
+  {
+    label: "Notes",
+    href: "/notes",
+    icon: "fa-solid fa-sticky-note",
+  },
+  {
+    label: "Blog",
+    href: "/blog",
+    icon: "fa-solid fa-blog",
+  },
+  {
+    label: "Contact",
+    href: "/contact",
+    icon: "fa-solid fa-envelope",
+  },
+  {
+    label: "More",
+    href: "/more",
+    icon: "fa-solid fa-ellipsis",
+  },
+];
+---
+
+<nav class="flex flex-row gap-4">
+  {
+    headerLinks.map((link) => (
+      <span>
+        <i class={`${link.icon} mr-0.5 text-sm`} />
+        <a
+          href={link.href}
+          class="underline decoration-wavy underline-offset-4 decoration-1.5
+        decoration-light-pu dark:decoration-dark-pu"
+        >
+          {link.label}
+        </a>
+      </span>
+    ))
+  }
+</nav>

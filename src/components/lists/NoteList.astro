@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+import { getPublishedAndSortedNotes } from "~/lib/blog";
+import Date from "~/components/util/Date.astro";
+import { render } from "astro:content";
+
+interface Props {
+	limit?: number;
+}
+
+const { limit } = Astro.props;
+const items = getPublishedAndSortedNotes(await getCollection("notes"));
+const limitedItems = limit ? items.slice(0, limit) : items;
+
+// Render all note contents
+const renderedItems = await Promise.all(
+	limitedItems.map(async (item) => {
+		const { Content } = await render(item);
+		return { ...item, Content };
+	})
+);
+---
+
+<ul class="fa-ul space-y-4 my-2">
+	{
+		renderedItems.map((item) => (
+			<li>
+				<i class={`fa-li ${item.data.icon}`} />
+				<a href={`/notes/${item.id}`}>
+					<Date date={item.data.date} />
+				</a>
+				<div>
+					<item.Content />
+				</div>
+			</li>
+		))
+	}
+</ul>

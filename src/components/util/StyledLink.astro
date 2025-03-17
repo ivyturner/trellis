@@ -1,0 +1,12 @@
+---
+const { href, icon = "fa-solid fa-arrow-right" } = Astro.props;
+---
+
+<ul class="fa-ul mb-2">  
+    <li>
+        <a href={href} class="link">
+            <i class={`fa-li ${icon}`} />
+            <slot />
+        </a>
+    </li>
+</ul>

@@ -1,11 +1,53 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "~/layouts/Base.astro";
+import Header from "~/components/ui/Header.astro";
+import Footer from "~/components/ui/Footer.astro";
+import Box from "~/components/ui/Box.astro";
+import CollectionList from "~/components/lists/BlogPostList.astro";
+import NoteList from "~/components/lists/NoteList.astro";
+import StyledLink from "~/components/util/StyledLink.astro";
 ---
 
 <Layout>
-	<Welcome />
+	<Header />
+	<main>
+		<h1
+			class="text-2xl font-bold underline decoration-wavy underline-offset-8 decoration-3
+        decoration-light-pu dark:decoration-dark-pu mb-6"
+		>
+			Hi! I'm Ivy, welcome to my website!
+		</h1>
+		<p>
+			I'm a musician, student, part-time software developer and <a
+				href="/blog"
+				class="link hover:decoration-solid">writer</a
+			>. <br />
+			I mostly work with <a
+				href="https://www.rust-lang.org/"
+				class="link hover:decoration-solid">Rust</a
+			>, <a
+				href="https://www.typescriptlang.org/"
+				class="link hover:decoration-solid">Typescript</a
+			>, and web frameworks like <a
+				href="https://astro.build/"
+				class="link hover:decoration-solid">Astro</a
+			>, and <a href="https://11ty.dev/" class="link hover:decoration-solid"
+				>Eleventy</a
+			>.
+		</p>
+
+		<div class="md:flex md:flex-column gap-2">
+			<Box title="latest blog posts" description="" icon="fa-solid fa-blog">
+				<CollectionList collection="blog" limit={5} />
+				<hr class="h-px my-8 bg-light-pu dark:bg-dark-pu" />
+				<StyledLink href="/blog">see more</StyledLink>
+			</Box>
+			<Box title="latest notes" description="" icon="fa-solid fa-sticky-note">
+				<NoteList limit={5} />
+				<hr class="h-px my-8 bg-light-pu dark:bg-dark-pu border-0" />
+				<StyledLink href="/notes">see more</StyledLink>
+			</Box>
+		</div>
+	</main>
 </Layout>
+<Footer />

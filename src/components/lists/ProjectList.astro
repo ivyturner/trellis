@@ -1,0 +1,45 @@
+---
+import Date from "~/components/util/Date.astro";
+import { getCollection } from "astro:content";
+
+interface Props {
+	limit?: number;
+}
+
+const { limit } = Astro.props;
+const items = await getCollection("projects");
+const limitedItems = limit ? items.slice(0, limit) : items;
+
+---
+
+<ul class="fa-ul space-y-4 my-2">
+	{
+		limitedItems.map((item) => (
+			<li>
+				<i class={`fa-li ${item.data.icon}`} />
+
+				<a href={`/projects/${item.id}`}>
+					<h3 class="font-bold mb-0.5">{item.data.name}</h3>
+				</a>
+
+				<p class="text-sm text-light-tx-2 dark:text-dark-tx-2">
+					<i class="fa-solid fa-calendar-alt mr-1 text-light-pu dark:text-dark-pu" />
+					<Date date={item.data.date} />
+					<i class="fa-solid fa-tags mx-1 text-light-pu dark:text-dark-pu" />
+					{(item.data.tags ?? []).map((tag) => (
+						<a
+							class="bg-light-pu dark:bg-dark-pu text-white px-1 py-0.5 rounded-md"
+							href={`/${collection}/tags/${tag}`}
+						>
+							{tag}
+						</a>
+					))}
+				</p>
+
+				<blockquote class="border-l-2 border-light-pu dark:border-dark-pu pl-4 mt-2 text-light-tx-2 dark:text-dark-tx-2">
+					{item.data.description}
+				</blockquote>
+			</li>
+		))
+	}
+</ul>

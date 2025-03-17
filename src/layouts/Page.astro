@@ -1,0 +1,18 @@
+---
+import Layout from "~/layouts/Base.astro";
+import Header from "~/components/ui/Header.astro";
+import Strapline from "~/components/ui/Strapline.astro";
+import Footer from "~/components/ui/Footer.astro";
+const { title, description, icon, date } = Astro.props;
+---
+
+<Layout>
+  <div>
+    <Header />
+    <main>
+      <Strapline title={title} description={description} icon={icon} date={date} />
+      <slot />
+    </main>
+    <Footer />
+  </div>
+</Layout>
