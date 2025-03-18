@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @theme {
     /* Disable default colors to prevent their use; feel free to re-enable as needed. */
@@ -200,3 +201,5 @@
 hr {
     @apply border-0 h-0.5 my-4 bg-light-pu dark:bg-dark-pu;
 } 
+
+

@@ -1,20 +1,20 @@
 ---
 interface Props {
-  title?: string;
-  description?: string;
-  icon?: string;
+	title?: string;
+	description?: string;
+	icon?: string;
 }
 
 const { title, description, icon } = Astro.props;
 ---
 
 <div
-  class="border-3 border-light-pu dark:border-dark-pu px-4 py-3 mt-5 w-fit"
+	class="border-3 border-light-pu dark:border-dark-pu px-4 py-3 mt-5 w-fit rounded-br-3xl rounded-tl-3xl"
 >
-  <span class="mb-1">
-    {icon && <i class={`fa-lg mr-1 ${icon}`} />}
-    {title && <span class="text-lg font-bold">{title}</span>}
-    {description && <span class="text-sm text-gray-500">{description}</span>}
-  </span>
-  <slot />
+	<span class="mb-1">
+		{icon && <i class={`fa-lg mr-1 ${icon}`} />}
+		{title && <span class="text-lg font-bold">{title}</span>}
+		{description && <span class="text-sm text-gray-500">{description}</span>}
+	</span>
+	<slot />
 </div>

@@ -6,6 +6,7 @@ import Box from "~/components/ui/Box.astro";
 import CollectionList from "~/components/lists/BlogPostList.astro";
 import NoteList from "~/components/lists/NoteList.astro";
 import StyledLink from "~/components/util/StyledLink.astro";
+import {Content as Bio} from "~/content/bio.md"
 ---
 
 <Layout>
@@ -17,24 +18,8 @@ import StyledLink from "~/components/util/StyledLink.astro";
 		>
 			Hi! I'm Ivy, welcome to my website!
 		</h1>
-		<p>
-			I'm a musician, student, part-time software developer and <a
-				href="/blog"
-				class="link hover:decoration-solid">writer</a
-			>. <br />
-			I mostly work with <a
-				href="https://www.rust-lang.org/"
-				class="link hover:decoration-solid">Rust</a
-			>, <a
-				href="https://www.typescriptlang.org/"
-				class="link hover:decoration-solid">Typescript</a
-			>, and web frameworks like <a
-				href="https://astro.build/"
-				class="link hover:decoration-solid">Astro</a
-			>, and <a href="https://11ty.dev/" class="link hover:decoration-solid"
-				>Eleventy</a
-			>.
-		</p>
+		
+		<Bio />
 
 		<div class="md:flex md:flex-column gap-2">
 			<Box title="latest blog posts" description="" icon="fa-solid fa-blog">
