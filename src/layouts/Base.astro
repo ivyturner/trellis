@@ -1,12 +1,14 @@
 ---
 import "~/styles/global.css";
-import Head from "~/components/ui/Head.astro";
+import Head from "~/components/util/Head.astro";
 import { ClientRouter } from "astro:transitions";
 import SizeWarning from "~/components/ui/SizeWarning.astro";
+
+const { title, date, description } = Astro.props;
 ---
 
 <html class="bg-light-bg text-light-tx dark:bg-dark-bg dark:text-dark-tx">
-  <Head />
+  <Head title={title} date={date} description={description} />
   <body class="pl-1 md:px-24 sm:pt-2 md:pt-6">
     <ClientRouter />
     <SizeWarning />

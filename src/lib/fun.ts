@@ -30,4 +30,7 @@ export function isBirthday() {
   return check;
 }
 
-
+export function getClacks(): string {
+  const clacks: string[] = ["Terry Pratchett", "Bram Moolenaar", "Alan Turing", "Haskell Curry", "Brianna Ghey"];
+  return clacks.join(", ");
+}

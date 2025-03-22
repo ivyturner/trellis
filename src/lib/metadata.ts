@@ -2,6 +2,7 @@ import conf from "~/site.config";
 // todo: add blog detection
 
 export const titleConstructor = (title: string) => {
+  console.log(title)
   if (!title) return conf.siteName;
   return `${title} | ${conf.siteName}`;
 };

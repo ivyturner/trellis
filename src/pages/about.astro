@@ -1,7 +1,16 @@
 ---
 import Page from "~/layouts/Page.astro";
+import Prose from "~/components/ui/Prose.astro";
+import { Content } from "~/content/about.md";
 ---
 
-<Page title="About" description="do you wanna know?" icon="fa-solid fa-user" date="2025-03-13">
-  <h1>i kiss girls</h1>
+<Page
+	title="About"
+	description="do you wanna know?"
+	icon="fa-solid fa-user"
+	date="2025-03-13"
+>
+	<Prose>
+		<Content />
+	</Prose>
 </Page>

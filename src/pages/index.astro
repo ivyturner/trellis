@@ -6,7 +6,9 @@ import Box from "~/components/ui/Box.astro";
 import CollectionList from "~/components/lists/BlogPostList.astro";
 import NoteList from "~/components/lists/NoteList.astro";
 import StyledLink from "~/components/util/StyledLink.astro";
-import {Content as Bio} from "~/content/bio.md"
+import { Content as Bio } from "~/content/bio.md";
+import Prose from "~/components/ui/Prose.astro";
+import { getClacks } from "~/lib/fun";
 ---
 
 <Layout>
@@ -18,16 +20,20 @@ import {Content as Bio} from "~/content/bio.md"
 		>
 			Hi! I'm Ivy, welcome to my website!
 		</h1>
-		
-		<Bio />
+
+		{getClacks()}
+
+		<Prose>
+			<Bio />
+		</Prose>
 
 		<div class="md:flex md:flex-column gap-2">
-			<Box title="latest blog posts" description="" icon="fa-solid fa-blog">
+			<Box title="latest blog posts" icon="fa-solid fa-blog">
 				<CollectionList collection="blog" limit={5} />
 				<hr class="h-px my-8 bg-light-pu dark:bg-dark-pu" />
 				<StyledLink href="/blog">see more</StyledLink>
 			</Box>
-			<Box title="latest notes" description="" icon="fa-solid fa-sticky-note">
+			<Box title="latest notes" icon="fa-solid fa-sticky-note">
 				<NoteList limit={5} />
 				<hr class="h-px my-8 bg-light-pu dark:bg-dark-pu border-0" />
 				<StyledLink href="/notes">see more</StyledLink>

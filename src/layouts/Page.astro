@@ -6,7 +6,7 @@ import Footer from "~/components/ui/Footer.astro";
 const { title, description, icon, date } = Astro.props;
 ---
 
-<Layout>
+<Layout title={title} description={description} date={date}>
   <div>
     <Header />
     <main>

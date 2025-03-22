@@ -203,3 +203,6 @@ hr {
 } 
 
 
+a {
+  cursor: url('https://fav.farm/✏️') 15 0, auto;
+}
