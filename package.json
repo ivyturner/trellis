@@ -13,6 +13,7 @@
     "@tailwindcss/vite": "^4.0.13",
     "astro": "^5.4.3",
     "ava": "^6.2.0",
+    "clsx": "^2.1.1",
     "luxon": "^3.5.0",
     "tailwindcss": "^4.0.13"
   },

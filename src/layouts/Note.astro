@@ -3,21 +3,17 @@ import Base from "~/layouts/Base.astro";
 import Header from "~/components/ui/Header.astro";
 import Date from "~/components/util/Date.astro";
 import { noteTitleConstructor } from "~/lib/metadata";
+import StyledLink from "~/components/util/StyledLink.astro";
 const { title, exturl, icon, date } = Astro.props;
 ---
 
 <Base title={noteTitleConstructor(title, date)}>
 	<Header />
-    <ul class="fa-ul marker:text-accent">
-        <li>
-            <a href="/notes" class="link">
-                <i class="fa-li fa-solid fa-arrow-left marker:text-accent" />
-                Back to notes
-            </a>
-        </li>
-    </ul>
+
 	<h2 class="text-2xl font-bold mt-2">A note from <Date date={date} /></h2>
-	<div class="bg-light-bg-2 dark:bg-dark-bg-2 p-4 rounded-lg w-fit min-w-[500px] mt-4">
+	<div
+		class="bg-light-bg-2 dark:bg-dark-bg-2 p-4 rounded-lg w-fit min-w-[500px] mt-4"
+	>
 		<ul class="fa-ul">
 			{
 				title && (
@@ -42,4 +38,8 @@ const { title, exturl, icon, date } = Astro.props;
 			<slot />
 		</div>
 	</div>
+	<hr class="w-[500px]" />
+	<StyledLink href="/notes" icon="fa-solid fa-arrow-left">
+		See more notes
+	</StyledLink>
 </Base>

@@ -9,12 +9,15 @@ const { title, description } = Astro.props;
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>{titleConstructor(title)}</title>
+	<title>{titleConstructor(title, Astro.url.pathname)}</title>
 	<meta name="description" content={descriptionConstructor(description)} />
 	<meta name="author" content="Ivy Turner" />
 
 	{/* og */}
-	<meta property="og:title" content={titleConstructor(title)} />
+	<meta
+		property="og:title"
+		content={titleConstructor(title, Astro.url.pathname)}
+	/>
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://ivyneeds.rest" />
 	<meta property="og:image" content="https://ivyneeds.rest/image.jpg" />
@@ -37,5 +40,5 @@ const { title, description } = Astro.props;
 	<meta name="generator" content={Astro.generator} />
 
 	{/* clacks */}
-	<meta http-equiv="X-Clacks-Overhead" content={`GNU ${getClacks()}`}>
+	<meta http-equiv="X-Clacks-Overhead" content={`GNU ${getClacks()}`} />
 </head>

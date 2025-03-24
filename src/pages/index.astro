@@ -8,7 +8,6 @@ import NoteList from "~/components/lists/NoteList.astro";
 import StyledLink from "~/components/util/StyledLink.astro";
 import { Content as Bio } from "~/content/bio.md";
 import Prose from "~/components/ui/Prose.astro";
-import { getClacks } from "~/lib/fun";
 ---
 
 <Layout>
@@ -21,13 +20,11 @@ import { getClacks } from "~/lib/fun";
 			Hi! I'm Ivy, welcome to my website!
 		</h1>
 
-		{getClacks()}
-
 		<Prose>
 			<Bio />
 		</Prose>
 
-		<div class="md:flex md:flex-column gap-2">
+		<div class="md:flex md:flex-column gap-6">
 			<Box title="latest blog posts" icon="fa-solid fa-blog">
 				<CollectionList collection="blog" limit={5} />
 				<hr class="h-px my-8 bg-light-pu dark:bg-dark-pu" />
@@ -40,5 +37,6 @@ import { getClacks } from "~/lib/fun";
 			</Box>
 		</div>
 	</main>
+	<Footer />
 </Layout>
-<Footer />
+

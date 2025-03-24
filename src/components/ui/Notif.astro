@@ -1,0 +1,24 @@
+---
+import { clsx } from "clsx";
+
+interface Props {
+	level: number;
+	icon?: string;
+}
+
+// level 0: info/note
+// level 1: warning
+// level 2: attn needed: oh fuck
+
+const { level } = Astro.props;
+---
+
+<div
+	class={clsx("sm:block md:hidden text-black", {
+		"bg-light-ye dark:bg-dark-ye": level === 0,
+		"bg-light-or dark:bg-dark-or": level === 1,
+		"bg-light-re dark:bg-dark-re": level === 2,
+	})}
+>
+	<slot />
+</div>

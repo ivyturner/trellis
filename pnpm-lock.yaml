@@ -17,6 +17,9 @@ importers:
       ava:
         specifier: ^6.2.0
         version: 6.2.0(rollup@4.35.0)
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       luxon:
         specifier: ^3.5.0
         version: 3.5.0
