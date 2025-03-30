@@ -1,5 +1,5 @@
 ---
-import conf from "~/site.config";
+import conf from "~/site.config.ts";
 import { getClacks } from "~/lib/fun";
 import { descriptionConstructor, titleConstructor } from "~/lib/metadata";
 
@@ -11,11 +11,15 @@ const { title, description } = Astro.props;
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{titleConstructor(title)}</title>
   <meta name="description" content={descriptionConstructor(description)} />
-  <meta name="author" content="Ivy Turner" />
+  <meta name="author" content={conf.author.name} />
+  <meta name="fediverse:creator" content={conf.author.fedi} />
 
   {/* og */}
   <meta property="og:title" content={titleConstructor(title)} />
-  <meta property="og:description" content={descriptionConstructor(description)}/>
+  <meta
+    property="og:description"
+    content={descriptionConstructor(description)}
+  />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={conf.site.url} />
   <meta property="og:image" content="https://ivyneeds.rest/image.jpg" />
