@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import Page from "~/layouts/Page.astro"
+import Date from "~/components/util/Date.astro";
+import StyledLink from "~/components/util/StyledLink.astro";
+export async function getStaticPaths() {
+	const allPosts = await getCollection("blog");
+	const uniqueTags = [
+		...new Set(allPosts.map((post) => post.data.tags).flat()),
+	];
+
+	return uniqueTags.map((tag) => {
+		const filteredPosts = allPosts.filter((post) =>
+			post.data.tags.includes(tag)
+		);
+		return {
+			params: { tag },
+			props: { posts: filteredPosts },
+		};
+	});
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<Page title={`Posts tagged with #${tag}`} icon="fa-solid fa-tag">
+	<StyledLink href="/blog/tags" icon="fa-solid fa-arrow-left">
+		See some more tags....
+	</StyledLink>	
+	<ul class="fa-ul">
+		{
+			posts.map((post) => (
+				<li>
+                    <i class={`fa-li ${post.data.icon} text-light-pu dark:text-dark-pu`}></i>
+                    <a href={`/blog/${post.id}`}>{post.data.title}</a>
+					<span class="text-sm text-light-tx-2 dark:text-dark-tx-2">
+						(<Date date={post.data.date} />)
+					</span>
+                </li>
+			))
+		}
+	</ul>
+</Page>

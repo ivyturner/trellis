@@ -1,5 +1,5 @@
 ---
-import siteConfig from "~/site.config";
+import conf from "~/site.config";
 import { getClacks } from "~/lib/fun";
 import { descriptionConstructor, titleConstructor } from "~/lib/metadata";
 
@@ -7,38 +7,36 @@ const { title, description } = Astro.props;
 ---
 
 <head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>{titleConstructor(title, Astro.url.pathname)}</title>
-	<meta name="description" content={descriptionConstructor(description)} />
-	<meta name="author" content="Ivy Turner" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{titleConstructor(title)}</title>
+  <meta name="description" content={descriptionConstructor(description)} />
+  <meta name="author" content="Ivy Turner" />
 
-	{/* og */}
-	<meta
-		property="og:title"
-		content={titleConstructor(title, Astro.url.pathname)}
-	/>
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://ivyneeds.rest" />
-	<meta property="og:image" content="https://ivyneeds.rest/image.jpg" />
-	<link rel="icon" href="https://fav.farm/%F0%9F%92%9C" />
+  {/* og */}
+  <meta property="og:title" content={titleConstructor(title)} />
+  <meta property="og:description" content={descriptionConstructor(description)}/>
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={conf.site.url} />
+  <meta property="og:image" content="https://ivyneeds.rest/image.jpg" />
+  <link rel="icon" href="https://fav.farm/%F0%9F%92%9C" />
 
-	<meta name="theme-color" content="#5E409D" />
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#5E409D" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-	{/* font awesone */}
-	<link
-		href="https://cdn.laker.tech/web/fa/css/fontawesome.css"
-		rel="stylesheet"
-	/>
-	<link href="https://cdn.laker.tech/web/fa/css/brands.css" rel="stylesheet" />
-	<link href="https://cdn.laker.tech/web/fa/css/solid.css" rel="stylesheet" />
+  {/* font awesone */}
+  <link
+    href="https://cdn.laker.tech/web/fa/css/fontawesome.css"
+    rel="stylesheet"
+  />
+  <link href="https://cdn.laker.tech/web/fa/css/brands.css" rel="stylesheet" />
+  <link href="https://cdn.laker.tech/web/fa/css/solid.css" rel="stylesheet" />
 
-	{/* analytics */}
+  {/* analytics */}
 
-	{/* astro generator */}
-	<meta name="generator" content={Astro.generator} />
+  {/* astro generator */}
+  <meta name="generator" content={Astro.generator} />
 
-	{/* clacks */}
-	<meta http-equiv="X-Clacks-Overhead" content={`GNU ${getClacks()}`} />
+  {/* clacks */}
+  <meta http-equiv="X-Clacks-Overhead" content={`GNU ${getClacks()}`} />
 </head>

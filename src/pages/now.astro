@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Page from "~/layouts/Page.astro";
 // import { Content } from "~/content/now.md";
 import Prose from "~/components/ui/Prose.astro";
@@ -14,23 +14,17 @@ async function getLatestNowPost() {
 }
 
 const latestPost = await getLatestNowPost(); // Fetch the first post at build time
+
+const { Content } = await render(latestPost);
 ---
 
-<Page title="/now" icon="fa-solid fa-calendar-days" date="2025-03-17">
+<Page title="/now" description="" icon="fa-solid fa-calendar-days" date={latestPost.data.date}>
+	<Prose>
+		{latestPost ? <Content /> : <p>nae now</p>}
+	</Prose>
 	<p class="text-light-tx-2 dark:text-dark-tx-2 mt-2">
 		This is a <a href="https://sive.rs/nowff">/now page</a> and
-		<a href="https://nownownow.com/about">you should make one</a>, too.
+		<a href="https://nownownow.com/about">you should make one</a>, too. <br>
+		It's generated from the latest post tagged with <a href="/blog/tags/now">#now</a>, which currently is <a href={`/blog/${latestPost.id}`}>{latestPost.data.title}</a>.
 	</p>
-	<Prose>
-	{
-		latestPost ? (
-			<div>
-				<h2>{latestPost.data.title}</h2>
-				<p>{latestPost.data.description}</p>
-			</div>
-		) : (
-			<p>nae now</p>
-		)
-	}
-	</Prose>
 </Page>

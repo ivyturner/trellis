@@ -1,25 +1,18 @@
 import conf from "~/site.config";
+let siteName = conf.site.title;
+let siteDescription = conf.site.description;
 
-export const isBlog = (pathname: string) => {
-	return pathname.startsWith("/blog");
-};
-
-export const titleConstructor = (title: string, pathname: string) => {
-	if (isBlog(pathname)) {
-		return title
-			? `${title} | Everything And The Girl`
-			: "Everything And The Girl";
-	}
-	if (!title) return conf.siteName;
-	return `${title} | ${conf.siteName}`;
+export const titleConstructor = (title: string) => {
+	if (!title) return siteName;
+	return `${title} | ${siteName}`;
 };
 
 export const descriptionConstructor = (description: string) => {
-	if (!description) return conf.description;
+	if (!description) return siteDescription;
 	return `${description}`;
 };
 
 export const noteTitleConstructor = (title: string, date: Date) => {
-	if (title) return title;
+	if (title) return `A note titled ${title}`;
 	return `A note from ${date.toLocaleDateString()}`;
 };

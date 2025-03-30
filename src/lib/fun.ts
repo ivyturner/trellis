@@ -1,28 +1,13 @@
 // all the code for making fun stuff happen
-
-const flavourText = [
-  "LOVE YOURSELF",
-  "Hack the planet!",
-  "all your base are belong to us!",
-  "must construct additional pylons",
-  "Everybody's dead, Dave.",
-  "Stay strange and be ace -- Yard Act",
-  "I'm a rocketman!",
-  "It's a fixer-upper!",
-  "💜",
-  "Sibelius crashed",
-  "All toasters toast toast",
-  "Trans rights are human rights!",
-  ":wq",
-];
-
+import flavourText from "~/data/flavourtext.json";
 export function getFlavourText() {
   return flavourText[Math.floor(Math.random() * flavourText.length)];
 }
 
-export function isBirthday() {
+// check if it's ivy's birthday at build time
+export function isBirthday(): boolean {
   const today = new Date();
-  const birthday = new Date(today.getFullYear(), 3, 13);
+  const birthday = new Date(today.getFullYear(), 9, 16); // October 16
   const check =
     today.getMonth() === birthday.getMonth() &&
     today.getDate() === birthday.getDate();
@@ -30,7 +15,14 @@ export function isBirthday() {
   return check;
 }
 
+// https://gnuterrypratchett.com/index.php
 export function getClacks(): string {
-  const clacks: string[] = ["Terry Pratchett", "Bram Moolenaar", "Alan Turing", "Haskell Curry", "Brianna Ghey"];
+  const clacks: string[] = [
+    "Terry Pratchett",
+    "Bram Moolenaar",
+    "Alan Turing",
+    "Haskell Curry",
+    "Brianna Ghey",
+  ];
   return clacks.join(", ");
 }

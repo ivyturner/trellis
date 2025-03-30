@@ -4,12 +4,11 @@ import { getCollection } from "astro:content";
 import { getPublishedAndSortedPosts } from "~/lib/blog";
 
 interface Props {
-	collection: string;
 	limit?: number;
 }
 
-const { collection, limit } = Astro.props;
-const items = getPublishedAndSortedPosts(await getCollection(collection));
+const { limit } = Astro.props;
+const items = getPublishedAndSortedPosts(await getCollection("blog"));
 const limitedItems = limit ? items.slice(0, limit) : items;
 
 const getPostIcon = (item: { data: { icon?: string } }) => {
@@ -26,16 +25,17 @@ const getPostIcon = (item: { data: { icon?: string } }) => {
 			<li>
 				<i class={`fa-li ${getPostIcon(item)}`} />
 
-				<a href={`/${collection}/${item.id}`}>
+				<a href={`/blog/${item.id}`}>
 					<h3 class="font-bold mb-0.5">{item.data.title}</h3>
 				</a>
 
 				<p class="text-sm text-light-tx-2 dark:text-dark-tx-2">
 					<i class="fa-solid fa-calendar-alt mr-1 text-light-pu dark:text-dark-pu" />
 					<Date date={item.data.date} />
-					<i class="fa-solid fa-tags mx-1 text-light-pu dark:text-dark-pu" />
+					<i class="mx-3"></i>
+					<i class="fa-solid fa-tags mr-1.5 text-light-pu dark:text-dark-pu" />
 					{(item.data.tags ?? []).map((tag) => (
-						<a class="bg-light-pu dark:bg-dark-pu text-white px-1 py-0.5 rounded-md" href={`/${collection}/tags/${tag}`}>{tag}</a>
+						<a class="bg-light-pu dark:bg-dark-pu text-white px-1 py-0.5 rounded-md" href={`/blog/tags/${tag}`}>{tag}</a>
 					))}
 				</p>
 

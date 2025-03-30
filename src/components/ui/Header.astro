@@ -1,30 +1,13 @@
 ---
 import Navigation from "./Navigation.astro";
 import conf from "~/site.config";
-import { isBlog } from "~/lib/metadata";
 
-let headertext = conf.siteName;
+let headertext = conf.site.title;
 let headerurl = "/";
-let headerarrow = false;
-
-if (isBlog(Astro.url.pathname)) {
-	headertext = "Everything And The Girl";
-	headerurl = "/blog";
-	headerarrow = true;
-}
 ---
 
 <header class="md:flex md:justify-between md:items-center mb-4">
 	<h1 class="text-2xl font-bold">
-		{
-			headerarrow && (
-				<span class="mr-2">
-					<a href="/">
-						<i class="fa-solid fa-arrow-left text-light-pu dark:text-dark-pu" />
-					</a>
-				</span>
-			)
-		}
 		<a href={headerurl}>{headertext}</a>
 	</h1>
 	<Navigation />

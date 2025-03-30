@@ -1,5 +1,5 @@
 ---
-
+import { isBirthday } from "~/lib/fun";
 ---
 
 <footer class="mt-12 text-sm text-light-tx-2 dark:text-dark-tx-2">
@@ -10,5 +10,12 @@
       ivyturner/trellis
     </a>
   </p>
-  <p>love yourself.</p>
+  <p>love yourself.
+    {isBirthday() && (
+      <span class="text-light-accent dark:text-dark-accent">
+        {" "}
+        happy birthday!
+      </span>
+    )}
+  </p>
 </footer>

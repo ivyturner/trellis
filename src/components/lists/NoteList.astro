@@ -24,7 +24,7 @@ const renderedItems = await Promise.all(
 <ul class="fa-ul space-y-4 my-2">
 	{
 		renderedItems.map((item) => (
-			<li>
+			<li class="max-w-[700px] p-4 rounded-lg shadow-lg">
 				<i class={`fa-li ${item.data.icon}`} />
 				<a href={`/notes/${item.id}`}>
 					<Date date={item.data.date} />
