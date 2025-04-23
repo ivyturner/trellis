@@ -1,7 +1,7 @@
 export default {
   site: {
     url: "https://ivy.rs",
-    title: "Ivy!",
+    title: "ivy.rs",
     description: "Ivy Turner's personal website",
   },
 
