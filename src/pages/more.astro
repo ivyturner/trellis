@@ -1,7 +1,15 @@
 ---
 import Page from "~/layouts/Page.astro";
 
-
+const meta = [
+  {
+    title: "Colophon",
+    link: "colophon",
+    desc: "How the site gets made",
+    icon: "fa-solid fa-wrench",
+    colour: "bl", // currently unused, cause i can't be bothered
+  },
+];
 ---
 
 <Page
@@ -10,5 +18,22 @@ import Page from "~/layouts/Page.astro";
   icon="fa-solid fa-user"
   date="2025-03-13"
 >
-
+  <h3 class="text-lg font-bold mb-2">/meta</h3>
+  <ul>
+    <ul>
+      {
+        meta.map((item) => (
+          <li>
+            <h4 class="font-bold">
+              <i class={`${item.icon} mr-2 text-light-pu dark:text-dark-pu`} />
+              <a href={"/meta/" + item.link}>{item.title}</a>
+            </h4>
+            <blockquote class="border-l-2 border-light-pu dark:border-dark-pu pl-4 mt-2 text-light-tx-2 dark:text-dark-tx-2">
+              {item.desc}
+            </blockquote>
+          </li>
+        ))
+      }
+    </ul>
+  </ul>
 </Page>

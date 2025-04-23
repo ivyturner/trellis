@@ -8,7 +8,7 @@ const headerLinks = [
   {
     label: "/now",
     href: "/now",
-    icon: "fa-solid fa-calendar-days"
+    icon: "fa-solid fa-calendar-days",
   },
   {
     label: "Projects",
@@ -29,7 +29,12 @@ const headerLinks = [
     label: "Contact",
     href: "/contact",
     icon: "fa-solid fa-envelope",
-  }, 
+  },
+  {
+    label: "More",
+    href: "/more",
+    icon: "fa-solid fa-arrow-right",
+  },
 ];
 ---
 
@@ -40,9 +45,7 @@ const headerLinks = [
         <i class={`${link.icon} mr-0.5 text-sm`} />
         <a
           href={link.href}
-
           aria-current={Astro.url.pathname === link.href ? "page" : undefined}
-
           class="underline decoration-wavy underline-offset-4 decoration-1.5
         decoration-light-pu dark:decoration-dark-pu"
         >
