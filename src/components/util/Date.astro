@@ -10,7 +10,7 @@ if (!date) {
   return null;
 }
 
-const dateObj = typeof date === "string" ? new Date(date) : date;
+const dateObj = typeof date === "string" ? new globalThis.Date(date) : date;
 const options: Intl.DateTimeFormatOptions = { year: "numeric", month: "long", day: "numeric" };
 
 if (showTime) {
