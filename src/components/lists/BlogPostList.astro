@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 import { getPublishedAndSortedPosts } from "~/lib/blog";
 
 interface Props {
-	limit?: number;
+  limit?: number;
 }
 
 const { limit } = Astro.props;
@@ -12,37 +12,42 @@ const items = getPublishedAndSortedPosts(await getCollection("blog"));
 const limitedItems = limit ? items.slice(0, limit) : items;
 
 const getPostIcon = (item: { data: { icon?: string } }) => {
-	if (item.data.icon && item.data.icon !== "fa-solid fa-blog") {
-		return item.data.icon;
-	}
-	return "fa-solid fa-arrow-right";
+  if (item.data.icon && item.data.icon !== "fa-solid fa-blog") {
+    return item.data.icon;
+  }
+  return "fa-solid fa-arrow-right";
 };
 ---
 
 <ul class="fa-ul space-y-4 my-2">
-	{
-		limitedItems.map((item) => (
-			<li>
-				<i class={`fa-li ${getPostIcon(item)}`} />
+  {
+    limitedItems.map((item) => (
+      <li>
+        <i class={`fa-li ${getPostIcon(item)}`} />
 
-				<a href={`/blog/${item.id}`}>
-					<h3 class="font-bold mb-0.5">{item.data.title}</h3>
-				</a>
+        <a href={`/blog/${item.id}`}>
+          <h3 class="font-bold mb-0.5">{item.data.title}</h3>
+        </a>
 
-				<p class="text-sm text-light-tx-2 dark:text-dark-tx-2">
-					<i class="fa-solid fa-calendar-alt mr-1 text-light-pu dark:text-dark-pu" />
-					<Date date={item.data.date} />
-					<i class="mx-3"></i>
-					<i class="fa-solid fa-tags mr-1.5 text-light-pu dark:text-dark-pu" />
-					{(item.data.tags ?? []).map((tag) => (
-						<a class="bg-light-pu dark:bg-dark-pu text-white px-1 py-0.5 rounded-md" href={`/blog/tags/${tag}`}>{tag}</a>
-					))}
-				</p>
+        <p class="text-sm text-light-tx-2 dark:text-dark-tx-2">
+          <i class="fa-solid fa-calendar-alt mr-1 text-light-pu dark:text-dark-pu" />
+          <Date date={item.data.date} />
+          <i class="mx-1.5" />
+          <i class="fa-solid fa-tags mr-1.5 text-light-pu dark:text-dark-pu" />
+          {(item.data.tags ?? []).map((tag) => (
+            <a
+              class="bg-light-pu dark:bg-dark-pu hover:bg-light-ma hover:dark:bg-dark-ma transition-colors text-white px-1 py-0.5 mr-2 last:mr-0 rounded-md text-center inline-block"
+              href={`/blog/tags/${tag}`}
+            >
+              {tag}
+            </a>
+          ))}
+        </p>
 
-				<blockquote class="border-l-2 border-light-pu dark:border-dark-pu pl-4 mt-2 text-light-tx-2 dark:text-dark-tx-2">
-					{item.data.description}
-				</blockquote>
-			</li>
-		))
-	}
+        <blockquote class="border-l-2 border-light-pu dark:border-dark-pu pl-4 mt-2 text-light-tx-2 dark:text-dark-tx-2">
+          {item.data.description}
+        </blockquote>
+      </li>
+    ))
+  }
 </ul>

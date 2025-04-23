@@ -11,7 +11,6 @@ export function isBirthday(): boolean {
   const check =
     today.getMonth() === birthday.getMonth() &&
     today.getDate() === birthday.getDate();
-  console.log(check);
   return check;
 }
 

@@ -1,16 +1,24 @@
 ---
 export interface Props {
   date: string | Date;
+  showTime?: boolean;
 }
-const { date } = Astro.props;
+const { date, showTime = false } = Astro.props;
 
 if (!date) {
+  console.log(Astro.url.pathname + " Date's fucked up m8")
   return null;
 }
 
 const dateObj = typeof date === "string" ? new Date(date) : date;
-const options = { year: "numeric", month: "long", day: "numeric" };
-const formattedDate = dateObj.toLocaleDateString("en-GB", options);
+const options: Intl.DateTimeFormatOptions = { year: "numeric", month: "long", day: "numeric" };
+
+if (showTime) {
+  options.hour = "2-digit";
+  options.minute = "2-digit";
+}
+
+const formattedDate = dateObj.toLocaleString("en-GB", options);
 const isoDate = dateObj.toISOString();
 ---
 

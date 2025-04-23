@@ -1,1 +1,1 @@
-Hey, my name is Ivy Rose. I 
+lol, nothing here yet. [ping me about it](mailto:ivy@sorbet.gay) 

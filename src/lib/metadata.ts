@@ -12,7 +12,7 @@ export const descriptionConstructor = (description: string) => {
 	return `${description}`;
 };
 
-export const noteTitleConstructor = (title: string, date: Date) => {
+export const noteTitleConstructor = (title: string | undefined, date: Date) => {
 	if (title) return `A note titled ${title}`;
 	return `A note from ${date.toLocaleDateString()}`;
 };

@@ -5,16 +5,15 @@ import { isBirthday } from "~/lib/fun";
 <footer class="mt-12 text-sm text-light-tx-2 dark:text-dark-tx-2">
   <p>© {new Date().getFullYear()} Ivy Turner</p>
   <p>
-    <a class="underline" href="https://github.com/ivyturner">github</a> ~
     <a class="underline" href="https://github.com/ivyturner/trellis">
-      ivyturner/trellis
+      view the source 
     </a>
   </p>
   <p>love yourself.
     {isBirthday() && (
       <span class="text-light-accent dark:text-dark-accent">
         {" "}
-        happy birthday!
+        if you can see this, its october 16th at build time! happy birthday me
       </span>
     )}
   </p>

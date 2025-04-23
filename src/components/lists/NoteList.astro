@@ -24,10 +24,17 @@ const renderedItems = await Promise.all(
 <ul class="fa-ul space-y-4 my-2">
 	{
 		renderedItems.map((item) => (
-			<li class="max-w-[700px] p-4 rounded-lg shadow-lg">
+			<li class="max-w-[700px]">
 				<i class={`fa-li ${item.data.icon}`} />
 				<a href={`/notes/${item.id}`}>
-					<Date date={item.data.date} />
+					<Date showTime date={item.data.date} />
+					{
+						item.data.title ? (
+							<span class="font-bold ml-1">
+								{item.data.title}
+							</span>
+						) : null
+					}
 				</a>
 				<div>
 					<item.Content />

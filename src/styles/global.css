@@ -202,7 +202,6 @@ hr {
     @apply border-0 h-0.5 my-4 bg-light-pu dark:bg-dark-pu;
 } 
 
-
-a {
-  cursor: url('https://fav.farm/✏️') 15 0, auto;
+[aria-current="page"] { /* used for the header thing */
+    @apply font-bold decoration-light-ma dark:decoration-dark-ma;
 }

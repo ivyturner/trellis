@@ -2,44 +2,63 @@
 import Base from "~/layouts/Base.astro";
 import Header from "~/components/ui/Header.astro";
 import Date from "~/components/util/Date.astro";
+import Prose from "~/components/ui/Prose.astro";
 import { noteTitleConstructor } from "~/lib/metadata";
 import StyledLink from "~/components/util/StyledLink.astro";
+
+interface Props {
+  title?: string | undefined;
+  exturl?: string | undefined;
+  icon: string;
+  date: Date;
+}
+
 const { title, exturl, icon, date } = Astro.props;
 ---
 
 <Base title={noteTitleConstructor(title, date)}>
-	<Header />
+  <Header />
 
-	<h2 class="text-2xl font-bold mt-2">A note from <Date date={date} /></h2>
-	<div
-		class="bg-light-bg-2 dark:bg-dark-bg-2 p-4 rounded-lg w-fit min-w-[500px] mt-4"
-	>
-		<ul class="fa-ul">
-			{
-				title && (
-					<li class="text-lg font-bold">
-						<i class={`fa-li ${icon}`} />
-						<h1 class="font-bold">{title}</h1>
-					</li>
-				)
-			}
-			{
-				exturl && (
-					<li>
-						<i class="fa-li fa-solid fa-link" />
-						<a href={exturl} class="link">
-							{exturl}
-						</a>
-					</li>
-				)
-			}
-		</ul>
-		<div class="pl-4 mt-2 prose dark:prose-invert">
-			<slot />
-		</div>
-	</div>
-	<hr class="w-[500px]" />
-	<StyledLink href="/notes" icon="fa-solid fa-arrow-left">
-		See more notes
-	</StyledLink>
+  <h2 class="text-xl font-bold mt-6">
+    <i class={`${icon} mr-1`}></i>
+    {
+      () => {
+        if (title) {
+          return (
+            <span class="font-bold">
+              A note titled {title} (<Date showTime date={date} />)
+            </span>
+          );
+        } else {
+          return (
+            <span class="font-bold">
+              A note from 
+              <Date showTime date={date} />
+            </span>
+          );
+        }
+      }
+    }
+  </h2>
+  <>
+    <p class="ml-4 mt-3 mb-3">
+      {
+        exturl && (
+          <StyledLink
+            href={exturl}
+            icon="fa-solid fa-arrow-up-right-from-square"
+          >
+            {exturl}
+          </StyledLink>
+        )
+      }
+    </p>
+    <Prose>
+      <slot />
+    </Prose>
+  </>
+  <hr class="w-[500px]" />
+  <StyledLink href="/notes" icon="fa-solid fa-arrow-left">
+    See more notes
+  </StyledLink>
 </Base>
