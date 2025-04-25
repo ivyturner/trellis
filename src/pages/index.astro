@@ -2,41 +2,17 @@
 import Layout from "~/layouts/Base.astro";
 import Header from "~/components/ui/Header.astro";
 import Footer from "~/components/ui/Footer.astro";
-import Box from "~/components/ui/Box.astro";
-import CollectionList from "~/components/lists/BlogPostList.astro";
-import NoteList from "~/components/lists/NoteList.astro";
-import StyledLink from "~/components/util/StyledLink.astro";
-import { Content as Bio } from "~/content/bio.md";
-import Prose from "~/components/ui/Prose.astro";
+import HeroSection from "~/components/home/Hero.astro";
+import LatestBlogPosts from "~/components/home/LatestBlogPosts.astro";
+import LatestNotes from "~/components/home/LatestNotes.astro";
 ---
 
 <Layout>
-	<Header />
-	<main>
-		<h1
-			class="text-2xl font-bold underline decoration-wavy underline-offset-8 decoration-3
-        decoration-light-pu dark:decoration-dark-pu mb-6"
-		>
-			Hi! I'm Ivy, welcome to my website!
-		</h1>
-
-		<Prose>
-			<Bio />
-		</Prose>
-
-		<div class="md:flex md:flex-column gap-6">
-			<Box title="latest blog posts" icon="fa-solid fa-blog">
-				<CollectionList limit={5} />
-				<hr class="h-px my-8 bg-light-pu dark:bg-dark-pu" />
-				<StyledLink href="/blog">see more</StyledLink>
-			</Box>
-			<Box title="latest notes" icon="fa-solid fa-sticky-note">
-				<NoteList limit={5} />
-				<hr class="h-px my-8 bg-light-pu dark:bg-dark-pu border-0" />
-				<StyledLink href="/notes">see more</StyledLink>
-			</Box>
-		</div>
-	</main>
-	<Footer />
+  <Header />
+  <HeroSection />
+  <div class="md:flex md:flex-column gap-6">
+    <LatestBlogPosts />
+    <LatestNotes />
+  </div>
 </Layout>
-
+<Footer />

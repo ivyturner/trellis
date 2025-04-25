@@ -1,0 +1,11 @@
+---
+import Box from "~/components/ui/Box.astro";
+import NoteList from "~/components/lists/NoteList.astro";
+import StyledLink from "~/components/util/StyledLink.astro";
+---
+
+<Box title="latest notes" icon="fa-solid fa-sticky-note">
+  <NoteList limit={5} />
+  <div class="py-1"></div>
+  <StyledLink href="/notes">see more</StyledLink>
+</Box>

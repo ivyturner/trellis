@@ -3,13 +3,14 @@ interface Props {
 	title?: string;
 	description?: string;
 	icon?: string;
+	class?: string;
 }
 
-const { title, description, icon } = Astro.props;
+const { title, description, icon, class } = Astro.props;
 ---
 
 <div
-	class="border-3 border-light-pu dark:border-dark-pu px-4 py-3 mt-5 w-fit rounded-br-3xl rounded-tl-3xl"
+	class="border-3 border-light-pu dark:border-dark-pu px-4 py-3 mt-5 w-fit rounded-br-3xl rounded-tl-3xl h-fit"
 >
 	<span class="mb-1">
 		{icon && <i class={`fa-lg mr-1 ${icon}`} />}

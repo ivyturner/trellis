@@ -2,6 +2,7 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
+    --font-mono: "IBM Plex Mono", monospace;
     /* Disable default colors to prevent their use; feel free to re-enable as needed. */
     --color-amber-*: initial;
     --color-lime-*: initial;

@@ -1,0 +1,10 @@
+---
+import Box from "~/components/ui/Box.astro";
+import CollectionList from "~/components/lists/BlogPostList.astro";
+import StyledLink from "~/components/util/StyledLink.astro";
+---
+<Box title="latest blog posts" icon="fa-solid fa-blog">
+  <CollectionList limit={3} />
+  <div class="py-1"></div>
+  <StyledLink href="/blog">see more</StyledLink>
+</Box>
