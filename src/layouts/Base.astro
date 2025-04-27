@@ -3,15 +3,24 @@ import "~/styles/global.css";
 import Head from "~/components/util/Head.astro";
 import { ClientRouter } from "astro:transitions";
 import SizeWarning from "~/components/util/SizeWarning.astro";
+import { isProd } from "~/lib/util";
+import Notif from "~/components/ui/Notif.astro";
 
 const { title, date, description } = Astro.props;
 ---
 
-<html class="bg-light-bg text-light-tx dark:bg-dark-bg dark:text-dark-tx">
+<html class="font-inter bg-light-bg text-light-tx dark:bg-dark-bg dark:text-dark-tx">
   <Head title={title} date={date} description={description} />
   <body class="pl-1 md:px-24 sm:pt-2 md:pt-6">
     <ClientRouter />
     <SizeWarning />
+    { 
+      () => {
+        if (!isProd()) {
+          return <Notif level={0} xstyle="w-fit p-2 mb-2">dev mode, hang tight</Notif>;
+        }
+      } 
+    }
     <slot />
   </body>
 </html>

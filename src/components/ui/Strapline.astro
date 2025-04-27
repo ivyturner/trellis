@@ -5,7 +5,7 @@ const { title, description, icon, date } = Astro.props;
 ---
 
 <div class="mb-4 mt-6">
-  <h2 class="text-xl font-bold">
+  <h2 class="text-xl font-bold font-inter">
     <i class={`${icon} text-xl mr-2 text-light-pu dark:text-dark-pu`}></i>
     {title}
   </h2>
@@ -18,7 +18,8 @@ const { title, description, icon, date } = Astro.props;
     () => {
       if (date) {
         return (
-          <p class="mt-2 text-sm text-light-tx-2 dark:text-dark-tx-2">
+          <p class="mt-2 ml-1.5 text-sm text-light-tx-2 dark:text-dark-tx-2">
+            <i class="fa-solid fa-calendar-days mr-2 text-light-pu dark:text-dark-pu"></i>
             <Date date={date} />
           </p>
         );

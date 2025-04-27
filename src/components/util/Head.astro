@@ -1,5 +1,6 @@
 ---
 import conf from "~/site.config.ts";
+import { Font } from "astro:assets";
 import { getClacks } from "~/lib/fun";
 import { descriptionConstructor, titleConstructor } from "~/lib/metadata";
 
@@ -35,6 +36,7 @@ const { title, description } = Astro.props;
   />
   <link href="https://cdn.laker.tech/web/fa/css/brands.css" rel="stylesheet" />
   <link href="https://cdn.laker.tech/web/fa/css/solid.css" rel="stylesheet" />
+  <Font cssVariable="--fontapi-inter" preload />
 
   {/* analytics */}
 

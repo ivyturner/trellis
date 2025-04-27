@@ -1,6 +1,8 @@
 ---
 import Page from "~/layouts/Page.astro";
+import Prose from "~/components/ui/Prose.astro"
 import { getCollection, render } from "astro:content";
+import AgeWarning from "~/components/blog/AgeWarning.astro";
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -20,5 +22,22 @@ const { Content } = await render(post);
   date={post.data.date}
   icon={post.data.icon}
 >
-  <Content />
+  <AgeWarning />
+  <Prose>
+    <Content />
+  </Prose>
+
+  <div class="mt-4">
+    <i class="fa-solid fa-hashtag mr-1"></i>
+    {
+      (post.data.tags ?? []).map((tag) => (
+        <a
+          class="bg-light-pu dark:bg-dark-pu hover:bg-light-ma hover:dark:bg-dark-ma transition-colors text-white px-1 py-0.5 mr-2 last:mr-0 rounded-md text-center inline-block"
+          href={`/blog/tags/${tag}`}
+        >
+          {tag}
+        </a>
+      ))
+    }
+  </div>
 </Page>

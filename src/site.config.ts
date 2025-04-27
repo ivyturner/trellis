@@ -8,7 +8,7 @@ export default {
   author: {
     name: "Ivy Turner",
     fedi: "@ivy@social.lol",
-    email: "ivy@sorbet.gay",
+    email: "ivy@ivy.rs",
   },
 
   devMode: {

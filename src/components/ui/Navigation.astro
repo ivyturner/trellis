@@ -23,7 +23,7 @@ const headerLinks = [
   {
     label: "Blog",
     href: "/blog",
-    icon: "fa-solid fa-star",
+    icon: "fa-solid fa-signature",
   },
   {
     label: "Contact",
@@ -38,7 +38,7 @@ const headerLinks = [
 ];
 ---
 
-<nav class="flex flex-row gap-4">
+<nav class="flex flex-row flex-wrap gap-4 md:flex-nowrap">
   {
     headerLinks.map((link) => (
       <span class="">

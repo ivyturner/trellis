@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, fontProviders } from 'astro/config';
 import config from './src/site.config'
 import tailwindcss from '@tailwindcss/vite';
 import pagefind from "astro-pagefind";
@@ -14,4 +14,18 @@ export default defineConfig({
   integrations: [
     pagefind()
   ],
+  markdown: {
+    shikiConfig: {
+      theme: "gruvbox-dark-hard"
+    },
+  },
+
+  experimental: {
+  contentIntellisense: true,
+    fonts: [{
+      provider: fontProviders.bunny(),
+      name: "Inter",
+      cssVariable: "--fontapi-inter"
+    }]
+  }
 });

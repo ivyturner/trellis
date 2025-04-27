@@ -16,7 +16,7 @@ const { level, icon, heading, xstyle } = Astro.props;
 ---
 
 <div
-	class={clsx(`sm:block md:hidden text-black ${xstyle}`, {
+	class={clsx(`text-black ${xstyle}`, {
 		"bg-light-ye dark:bg-dark-ye": level === 0,
 		"bg-light-or dark:bg-dark-or": level === 1,
 		"bg-light-re dark:bg-dark-re": level === 2,
