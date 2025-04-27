@@ -5,23 +5,22 @@ const { date } = Astro.props;
 
 const isOldPost = (date: Date) => {
   // very much stolen from the wonderful Robb Knight (https://rknight.me)
-  return true;
   const d = DateTime.fromISO(date.toISOString()).setZone("Europe/London");
-  return DateTime.now().diff(d, "years").years > 4;
+  return DateTime.now().diff(d, "years").years > -1;
 };
 ---
 
 {
   () => {
-    if (isOldPost) {
+    if (isOldPost(date)) {
       return (
         <Notif
           level={0}
-          heading="This post is over 4 years old"
+          heading="This post is over 4 years old!"
           icon="fa-solid fa-hand-pointer"
-          xstyle="ml-2 my-4 p-4 w-fit"
+          xstyle="ml-1 mb-4"
         >
-          a
+          It might have now-false information or not reflect my current views.
         </Notif>
       );
     }

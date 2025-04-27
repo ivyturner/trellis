@@ -22,7 +22,7 @@ const { Content } = await render(post);
   date={post.data.date}
   icon={post.data.icon}
 >
-  <AgeWarning />
+  <AgeWarning date={post.data.date} />
   <Prose>
     <Content />
   </Prose>

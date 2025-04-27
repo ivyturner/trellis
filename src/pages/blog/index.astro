@@ -1,6 +1,7 @@
 ---
 import Page from "~/layouts/Page.astro";
 import BlogPostList from "~/components/lists/BlogPostList.astro";
+import StyledLink from "~/components/util/StyledLink.astro";
 ---
 
 <Page
@@ -8,5 +9,6 @@ import BlogPostList from "~/components/lists/BlogPostList.astro";
   description="writing"
   icon="fa-solid fa-signature"
 >
+  <StyledLink href="/blog/tags">See all the tags</StyledLink>
   <BlogPostList />
 </Page>

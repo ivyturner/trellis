@@ -1,15 +1,19 @@
 ---
 import Layout from "~/layouts/Page.astro";
+import StyledLink from "~/components/util/StyledLink.astro";
 import { getCollection } from "astro:content";
 
 const allPosts = await getCollection("blog");
 const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+
+
 ---
 
 <Layout title="Tags" description="all the tags i've used, and probably some spelling mistakes" icon="fa-solid fa-tags">
+    <StyledLink href="/blog" icon="fa-solid fa-arrow-left">Back to the blog index</StyledLink>
     <ul class="fa-ul">
         {
-            tags.map((tag) => <li>
+            tags.map((tag) => <li class="mb-1">
                 <i class="fa-li fa-solid fa-hashtag text-light-pu dark:text-dark-pu"></i>
                 <a href={`/blog/tags/${tag}`}>{tag}</a>
                 <span class="text-sm text-light-tx-2 dark:text-dark-tx-2">

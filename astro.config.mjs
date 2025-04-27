@@ -23,7 +23,7 @@ export default defineConfig({
   experimental: {
   contentIntellisense: true,
     fonts: [{
-      provider: fontProviders.bunny(),
+      provider: fontProviders.google(),
       name: "Inter",
       cssVariable: "--fontapi-inter"
     }]

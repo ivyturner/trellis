@@ -2,29 +2,31 @@
 import { clsx } from "clsx";
 
 interface Props {
-	level: number;
-	icon?: string;
-	heading?: string;
-	xstyle?: string;
+  level: number;
+  icon?: string;
+  heading?: string;
+  xstyle?: string;
 }
 
 // level 0: info/note
 // level 1: warning
-// level 2: attn needed: oh fuck
+// level 2: attn needed
+// level 3: oh fuck
 
 const { level, icon, heading, xstyle } = Astro.props;
 ---
 
 <div
-	class={clsx(`text-black ${xstyle}`, {
-		"bg-light-ye dark:bg-dark-ye": level === 0,
-		"bg-light-or dark:bg-dark-or": level === 1,
-		"bg-light-re dark:bg-dark-re": level === 2,
-	})}
+  class={clsx(`w-fit p-2 px-4 my-2 ${xstyle}`, {
+	  "bg-light-ui dark:bg-dark-ui": level === 0,
+    "bg-light-ye dark:bg-dark-ye text-black": level === 1,
+    "bg-light-or dark:bg-dark-or text-black": level === 2,
+    "bg-light-re dark:bg-dark-re text-black": level === 3,
+  })}
 >
-	<div class="flex items-center">
-		{icon && <i class={`${icon} text-xl mr-2`}></i>}
-		{heading && <h2 class="text-xl font-bold">{heading}</h2>}
-	</div>
-	<slot />
+  <div class="flex items-center">
+    {icon && <i class={`${icon} font-bold text-xl mr-2`} />}
+    {heading && <h2 class="text-xl font-bold">{heading}</h2>}
+  </div>
+  <slot />
 </div>

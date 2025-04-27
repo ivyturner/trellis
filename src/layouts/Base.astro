@@ -17,7 +17,7 @@ const { title, date, description } = Astro.props;
     { 
       () => {
         if (!isProd()) {
-          return <Notif level={0} xstyle="w-fit p-2 mb-2">dev mode, hang tight</Notif>;
+          return <Notif level={1} xstyle="w-fit p-2 mb-2">dev mode, hang tight</Notif>;
         }
       } 
     }
