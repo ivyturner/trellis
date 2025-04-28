@@ -6,7 +6,7 @@ const { date } = Astro.props;
 const isOldPost = (date: Date) => {
   // very much stolen from the wonderful Robb Knight (https://rknight.me)
   const d = DateTime.fromISO(date.toISOString()).setZone("Europe/London");
-  return DateTime.now().diff(d, "years").years > -1;
+  return DateTime.now().diff(d, "years").years > 3;
 };
 ---
 
@@ -16,7 +16,7 @@ const isOldPost = (date: Date) => {
       return (
         <Notif
           level={0}
-          heading="This post is over 4 years old!"
+          heading="This post is over 3 years old!"
           icon="fa-solid fa-hand-pointer"
           xstyle="ml-1 mb-4"
         >
