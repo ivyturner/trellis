@@ -1,8 +1,8 @@
 ---
-const { href, icon = "fa-solid fa-arrow-right" } = Astro.props;
+const { href, xstyle, icon = "fa-solid fa-arrow-right" } = Astro.props;
 ---
 
-<ul class="fa-ul mb-2">  
+<ul class=`fa-ul mb-2 ${xstyle}`>  
     <li>
         <a href={href} class="link">
             <i class={`fa-li ${icon}`} />
