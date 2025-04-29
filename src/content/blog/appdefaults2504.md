@@ -1,7 +1,7 @@
 ---
 title: App Defaults the Third
 description: Not much has changed but it feels weird not having an App Defaults post here
-date: 2025-05-01
+date: 2025-04-29
 tags: 
     - app-defaults
     - tech

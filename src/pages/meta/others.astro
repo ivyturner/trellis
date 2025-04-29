@@ -1,0 +1,18 @@
+---
+import Page from "~/layouts/Page.astro";
+
+import others from "~/data/others.json";
+---
+
+<Page
+  title="Other people and sites I like"
+  description="also some webrings, wow!"
+  icon="fa-solid fa-users"
+>
+  <h3>Friends</h3>
+  {others.friends.map((item) => {
+    switch (item.b) {
+      
+    }
+  })}
+</Page>

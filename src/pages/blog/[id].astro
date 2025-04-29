@@ -21,6 +21,7 @@ const { Content } = await render(post);
   description={post.data.description}
   date={post.data.date}
   icon={post.data.icon}
+  back="/blog"
 >
   <AgeWarning date={post.data.date} />
   <Prose>
