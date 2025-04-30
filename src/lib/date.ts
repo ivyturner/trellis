@@ -1,7 +1,7 @@
 
-function checkDate(date: Date | string): Date {
-  if (typeof date === Date)
-}
+// function checkDate(date: Date | string): Date {
+//   if (typeof date === Date)
+// }
 
 export function formattedDate(date: Date, showTime: boolean): string {
     const options: Intl.DateTimeFormatOptions = {

@@ -1,10 +1,8 @@
 ---
-import { formattedDate, isoDate } from '~/lib/date';
 export interface Props {
-  date: Date;
+  date: string | Date;
   showTime?: boolean;
 }
-
 const { date, showTime = false } = Astro.props;
 
 if (!date) {
@@ -12,6 +10,16 @@ if (!date) {
   return null;
 }
 
+const dateObj = typeof date === "string" ? new globalThis.Date(date) : date;
+const options: Intl.DateTimeFormatOptions = { year: "numeric", month: "long", day: "numeric" };
+
+if (showTime) {
+  options.hour = "2-digit";
+  options.minute = "2-digit";
+}
+
+const formattedDate = dateObj.toLocaleString("en-GB", options);
+const isoDate = dateObj.toISOString();
 ---
 
-<time datetime={isoDate(date)}>{formattedDate(date, showTime)}</time>
+<time datetime={isoDate}>{formattedDate}</time>
