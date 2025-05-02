@@ -8,33 +8,48 @@ import { formattedDate } from '~/lib/date';
 
 const parser = new MarkdownIt();
 
+/**
+ * Extract links from HTML and append them as footnotes.
+ * @param {string} html - The HTML content to process.
+ * @returns {string} - The plain text content with links as footnotes.
+ */
+function stripHtmlAndAddFootnotes(html) {
+    const linkRegex = /<a\s+(?:[^>]*?\s+)?href="([^"]*)">(.*?)<\/a>/g;
+    let footnotes = [];
+    let footnoteIndex = 1;
+
+    // Replace links with footnote references
+    const text = html.replace(linkRegex, (match, href, text) => {
+        footnotes.push(`[${footnoteIndex}]: ${href}`);
+        return `${text} [${footnoteIndex++}]`;
+    });
+
+    // Strip remaining HTML tags
+    const plainText = sanitizeHtml(text, { allowedTags: [], allowedAttributes: {} });
+
+    // Append footnotes to the content
+    return `${plainText}\n\n${footnotes.join('\n')}`;
+}
+
 export async function GET(context) {
     const blog = await getCollection('notes');
     return rss({
-        // `<title>` field in output xml
         title: conf.site.title,
-        // `<description>` field in output xml
         description: conf.site.description,
-        // Pull in your project "site" from the endpoint context
-        // https://docs.astro.build/en/reference/api-reference/#site
         site: context.site,
-        stylesheet: "/feed.xsl",
-        // Array of `<item>`s in output xml
-        // See "Generating items" section for examples using content collections and glob imports
-        items: blog.map((post) => ({
-            title: post.data.title || `A note from ${formattedDate(post.data.date)}`,
-            pubDate: post.data.date,
-            description: post.data.description,
-            // Compute RSS link from post `id`
-            // This example assumes all posts are rendered as `/blog/[id]` routes
-            link: `/notes/${post.id}/`,
-            trailingSlash: false,
-            content: sanitizeHtml(parser.render(post.body), {
-                allowedTags: sanitizeHtml.defaults.allowedTags.concat(['img'])
-            }),
-            ...post.data,
-        })),
-        // (optional) inject custom xml
+        // stylesheet: "/feed.xsl",
+        items: blog.map((post) => {
+            const contentWithFootnotes = stripHtmlAndAddFootnotes(parser.render(post.body));
+            return {
+                title: post.data.title || `A note from ${formattedDate(post.data.date)}`,
+                pubDate: post.data.date,
+                description: post.data.description,
+                link: `/notes/${post.id}/`,
+                trailingSlash: false,
+                content: contentWithFootnotes,
+                ...post.data,
+            };
+        }),
         customData: `<language>en-gb</language>`,
     });
 }
