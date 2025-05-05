@@ -5,6 +5,7 @@ date: 2025-04-29
 tags: 
     - meta
     - web
+featured: true
 ---
 
 Hi! Welcome to my new website. We're on a version number high enough that I don't even care anymore.

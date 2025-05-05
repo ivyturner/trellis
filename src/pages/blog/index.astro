@@ -2,19 +2,18 @@
 import Page from "~/layouts/Page.astro";
 import BlogPostList from "~/components/lists/BlogPostList.astro";
 import StyledLink from "~/components/util/StyledLink.astro";
+import Box from "~/components/ui/Box.astro";
 ---
 
 <Page title="Blog" description="writing" icon="fa-solid fa-signature">
   <StyledLink href="/blog/tags">See all the tags</StyledLink>
-  <StyledLink 
-    href="/blog/feed.xml" 
-    icon="fa-solid fa-rss"
-  >
+  <StyledLink href="/blog/feed.xml" icon="fa-solid fa-rss">
     Subscribe via RSS
   </StyledLink>
   <div class="mb-4"></div>
-  <h3>Featured</h3>
-  <BlogPostList featured={true} />
+  <Box title="Featured posts">
+    <BlogPostList featured={true} />
+  </Box>
   <div class="mb-4"></div>
   <BlogPostList />
 </Page>

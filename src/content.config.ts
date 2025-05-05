@@ -12,7 +12,7 @@ const blog = defineCollection({
 		tags: z.array(z.string()),
 		draft: z.boolean().default(false),
 		featured: z.boolean().default(false),
-		icon: z.string().optional().default("fa-solid fa-star"),
+		icon: z.string().optional().default("fa-solid fa-signature"),
 		image: z
 			.object({
 				src: z.string(),

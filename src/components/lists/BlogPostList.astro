@@ -18,19 +18,13 @@ if (featured) {
 
 const limitedItems = limit ? items.slice(0, limit) : items;
 
-const getPostIcon = (item: { data: { icon?: string } }) => {
-  if (item.data.icon && item.data.icon !== "fa-solid fa-blog") {
-    return item.data.icon;
-  }
-  return "fa-solid fa-arrow-right";
-};
 ---
 
 <ul class="fa-ul space-y-4 my-2">
   {
     limitedItems.map((item) => (
       <li>
-        <i class={`fa-li ${getPostIcon(item)}`} />
+        <i class={`fa-li ${item.data.icon}`} />
 
         <a href={`/blog/${item.id}`}>
           <h3 class="font-bold mb-0.5">{item.data.title}</h3>

@@ -14,12 +14,12 @@ Icons are from [Font Awesome](https://fontawesome.com) and self-served by [Bunny
 
 ### the domains, [ivy], what do they MEAN?
 
-i chose ivy.rs for three reasons
+I chose ivy.rs for three reasons
 - short, easy to say
 - i like the rust programming language, even if i am terrible at it
 - my name is IVY RoSe
 
-laker.tech is my old personal site domain and redirects here for posterity / so i don't have to update it.
+laker.tech is my old personal site domain and redirects here for posterity / so I don't have to update it.
 
 ivy.rs is bought through [istanco.net](https://istanco.net) as Porkbun doesnt support .rs domains (yet?)
 All of my other domains are bought through [Porkbun](https://porkbun.com).
