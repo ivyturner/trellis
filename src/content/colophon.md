@@ -1,12 +1,6 @@
 ivy.rs is built using [Astro](https://astro.build) and is deployed on [fly.io](https://fly.io).
 
-okay more specific this time:
-- SSG: [Astro](https://astro.build)
-- Styling: [Tailwind CSS](https://tailwindcss.com)
-- Color scheme: [Flexoki](https://stephango.com/flexoki) (it's very pretty)
-- Deployment: [fly.io](https://fly.io) (likely to be self-hosted as soon as i get GitHub Actions working)
-
-You can find the source code for this site at [ivyturner/ivy.rs](https://github.com/ivyturner/ivy.rs)
+You can find the source code for this site on my git repo: [ivy/ivy.rs](https://git.houseplants.cloud/ivy/ivy.rs)
 
 ### Design
 
@@ -14,7 +8,9 @@ ivy.rs is styled with [Tailwind CSS](https://tailwindcss.com), because I like ho
 
 The colorscheme in use is [Flexoki](https://stephango.com/flexoki), because It's Extremely Pretty.
 
-The font is Inter, currently served by [Googl]
+The fonts are IBM Plex {Sans,Mono}, served by [Bunny Fonts](https://fonts.bunny.net).
+
+Icons are from [Font Awesome](https://fontawesome.com) and self-served by [Bunny CDN](https://bunny.net).
 
 ### the domains, [ivy], what do they MEAN?
 
