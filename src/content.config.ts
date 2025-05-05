@@ -11,6 +11,7 @@ const blog = defineCollection({
 		date: z.date().default(new Date()),
 		tags: z.array(z.string()),
 		draft: z.boolean().default(false),
+		featured: z.boolean().default(false),
 		icon: z.string().optional().default("fa-solid fa-star"),
 		image: z
 			.object({

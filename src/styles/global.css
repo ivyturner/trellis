@@ -1,8 +1,24 @@
+@import url(https://fonts.bunny.net/css?family=ibm-plex-mono:400,700i|ibm-plex-sans:300,300i,400,400i,500,500i,700,700i);
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 @theme {
-    --font-mono: "IBM Plex Mono", monospace;
+    --font-sans: "IBM Plex Sans", ui-sans-serif,
+        system-ui,
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji";
+    --font-mono: "IBM Plex Mono", ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Monaco,
+        Consolas,
+        "Liberation Mono",
+        "Courier New",
+        monospace;
+
     /* Disable default colors to prevent their use; feel free to re-enable as needed. */
     --color-amber-*: initial;
     --color-lime-*: initial;
@@ -202,8 +218,9 @@
 
 hr {
     @apply border-0 h-0.5 my-4 bg-light-pu dark:bg-dark-pu;
-} 
+}
 
-[aria-current="page"] { /* used for the header thing */
+[aria-current="page"] {
+    /* used for the header thing */
     @apply font-bold decoration-light-ma dark:decoration-dark-ma;
 }

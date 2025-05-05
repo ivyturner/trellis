@@ -1,5 +1,5 @@
 I'm a musician, student, part-time software developer and writer.
 
-I like creating websites (like this one) with [Astro](https://astro.build), and going outside whenever I'm not doing either of those things.
-
 I go by **ivyrs**, **ivyneedsrest** or previously `lakerjv, lxjv, losangeles` etc.
+
+I'm currently studying music and performing in a band :3

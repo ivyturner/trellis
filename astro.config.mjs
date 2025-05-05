@@ -16,7 +16,7 @@ export default defineConfig({
   ],
   markdown: {
     shikiConfig: {
-      theme: "gruvbox-dark-hard"
+      theme: "gruvbox-dark-soft"
     },
   },
 

@@ -1,5 +1,7 @@
 # build output
 dist/
+redirects.caddyfile
+robots.caddyfile
 
 # generated types
 .astro/

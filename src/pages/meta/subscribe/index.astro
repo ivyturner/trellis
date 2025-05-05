@@ -1,0 +1,24 @@
+---
+import Page from "~/layouts/Page.astro";
+---
+
+<Page title="Subscribe" description="hit that bell gamers" icon="fa-solid fa-rss">
+  <ul class="fa-ul mb-2">
+    <li class="mb-1">
+      <i class="fa-li fa-solid fa-signature"></i>
+      <b>Blog</b>:
+      <a class="link" href="/blog/feed.xml">RSS</a>
+    </li>
+    <li>
+      <i class="fa-li fa-solid fa-sticky-note"></i>
+      <b>Notes</b>:
+      <a class="link" href="/notes/feed.xml">RSS</a>
+    </li>
+  </ul>
+  <p>
+    I also post most of the stuff here on <a
+      href="https://social.lol/@ivy"
+      class="link">Mastodon</a
+    > & <a href="https://bsky.app/profile/ivy.rs" class="link">Bluesky</a>.
+  </p>
+</Page>

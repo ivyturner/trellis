@@ -34,9 +34,9 @@ function stripHtmlAndAddFootnotes(html) {
 export async function GET(context) {
     const blog = await getCollection('notes');
     return rss({
-        title: conf.site.title,
+        title: `${conf.site.title} notes`,
         description: conf.site.description,
-        site: context.site,
+        site: context.site + "notes",
         // stylesheet: "/feed.xsl",
         items: blog.map((post) => {
             const contentWithFootnotes = stripHtmlAndAddFootnotes(parser.render(post.body));

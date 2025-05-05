@@ -1,5 +1,4 @@
 ---
-import { getFlavourText } from "~/lib/fun";
 import Navigation from "./Navigation.astro";
 import conf from "~/site.config";
 
@@ -12,6 +11,5 @@ let headerurl = "/";
 		<i class="fa-solid fa-star mr-2"></i>
 		<a href={headerurl}>{headertext}</a>
 	</h1>
-	<p class="hidden md:block">{getFlavourText()}</p>
 	<Navigation />
 </header>

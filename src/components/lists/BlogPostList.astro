@@ -5,10 +5,17 @@ import { getPublishedAndSortedPosts } from "~/lib/blog";
 
 interface Props {
   limit?: number;
+  featured?: boolean;
 }
 
-const { limit } = Astro.props;
-const items = getPublishedAndSortedPosts(await getCollection("blog"));
+const { limit = 1000, featured = false } = Astro.props;
+let items = getPublishedAndSortedPosts(await getCollection("blog"));
+
+// Filter items to only include featured posts if the `featured` prop is true
+if (featured) {
+  items = items.filter((item) => item.data.featured === true);
+}
+
 const limitedItems = limit ? items.slice(0, limit) : items;
 
 const getPostIcon = (item: { data: { icon?: string } }) => {

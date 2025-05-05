@@ -10,12 +10,12 @@ export async function GET(context) {
     const blog = await getCollection('blog');
     return rss({
         // `<title>` field in output xml
-        title: conf.site.title,
+        title: `${conf.site.title} blog`,
         // `<description>` field in output xml
         description: conf.site.description,
         // Pull in your project "site" from the endpoint context
         // https://docs.astro.build/en/reference/api-reference/#site
-        site: context.site,
+        site: context.site + "/blog",
         stylesheet: "/feed.xsl",
         // Array of `<item>`s in output xml
         // See "Generating items" section for examples using content collections and glob imports

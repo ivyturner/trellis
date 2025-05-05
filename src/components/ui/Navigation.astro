@@ -38,7 +38,7 @@ const headerLinks = [
 ];
 ---
 
-<nav class="flex flex-row flex-wrap gap-4 md:flex-nowrap">
+<nav class="flex flex-row flex-wrap gap-4 md:flex-nowrap text-balance">
   {
     headerLinks.map((link) => (
       <span class="">
@@ -54,4 +54,5 @@ const headerLinks = [
       </span>
     ))
   }
+  <a href="/meta/subscribe"><i class="fa-solid fa-rss text-light-or dark:text-dark-or"></i></a>
 </nav>

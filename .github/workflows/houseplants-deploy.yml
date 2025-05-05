@@ -1,0 +1,33 @@
+name: Deploy on Houseplants
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Tailscale
+        uses: tailscale/github-action@v3
+        with:
+          oauth-client-id: ${{secrets.TS_OAUTH_ID}}
+          oauth-secret: ${{secrets.TS_OAUTH_SECRET}}
+          tags: tag:ci
+          use-cache: "true"
+
+      - name: Deploy to Houseplants
+        shell: bash
+        run: |
+          # Add the Tailscale IP of your VPS
+          TAILSCALE_IP="100.64.20.2" # Replace with your VPS Tailscale IP
+
+          # SSH into the VPS and deploy
+          ssh -o StrictHostKeyChecking=no "deploy@${TAILSCALE_IP}" << 'EOF'
+          cd /opt/ivy.rs # Replace with the project directory on the VPS
+          git pull origin main
+          pnpm install # Adjust this if you're using a different build tool
+          pnpm run build
+          EOF

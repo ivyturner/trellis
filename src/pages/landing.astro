@@ -1,0 +1,46 @@
+---
+import Navigation from "~/components/ui/Navigation.astro";
+import Base from "~/layouts/Base.astro";
+import siteConfig from "~/site.config";
+import Prose from "~/components/ui/Prose.astro";
+import Image from "astro/components/Image.astro";
+import { Content as Bio } from "~/content/bio.md";
+---
+
+<Base>
+  <div class="flex items-center flex-col">
+    <div
+      class="border-4 border-light-pu dark:border-dark-pu w-fit p-4 rounded-br-3xl rounded-tl-3xl"
+    >
+      <div>
+        <h1 class="font-bold text-3xl text-center">{siteConfig.site.title}</h1>
+        <Navigation />
+      </div>
+    </div>
+
+    <div
+      class="mt-4 border-4 border-light-pu dark:border-dark-pu w-fit p-4 rounded-br-3xl rounded-tl-3xl"
+    >
+      <h1
+        class="text-2xl font-bold underline decoration-wavy underline-offset-8 decoration-3 decoration-light-pu dark:decoration-dark-pu mb-6"
+      >
+        Hi! I'm Ivy, welcome to my website!
+      </h1>
+
+      <Prose>
+        <Bio />
+      </Prose>
+
+      <div class="mt-2 flex gap-2"></div>
+    </div>
+
+    <div>
+      <Image
+        src={"https://cdn.laker.tech/images/tree.png"}
+        alt={"tree"}
+        width={200}
+        height={300}
+      />
+    </div>
+  </div>
+</Base>
