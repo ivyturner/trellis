@@ -1,25 +1,15 @@
 ---
+import { formattedDate } from '~/lib/date';
 export interface Props {
   date: string | Date;
   showTime?: boolean;
 }
 const { date, showTime = false } = Astro.props;
 
-if (!date) {
-  console.log(Astro.url.pathname + " Date's fucked up m8")
-  return null;
-}
-
 const dateObj = typeof date === "string" ? new globalThis.Date(date) : date;
-const options: Intl.DateTimeFormatOptions = { year: "numeric", month: "long", day: "numeric" };
 
-if (showTime) {
-  options.hour = "2-digit";
-  options.minute = "2-digit";
-}
-
-const formattedDate = dateObj.toLocaleString("en-GB", options);
+const aaDate = formattedDate(dateObj, showTime)
 const isoDate = dateObj.toISOString();
 ---
 
-<time datetime={isoDate}>{formattedDate}</time>
+<time datetime={isoDate}>{aaDate}</time>

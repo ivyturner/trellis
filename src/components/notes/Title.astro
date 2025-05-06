@@ -1,0 +1,21 @@
+---
+import Date from "../util/Date.astro";
+const { title, date } = Astro.props;
+---
+
+<h2>{()=>{
+    if (title) {
+    return (
+      <span>
+        A note titled {title} (<Date showTime date={date} />)
+      </span>
+    );
+  } else {
+    return (
+      <span>
+        A note from
+        <Date showTime date={date} />
+      </span>
+    );
+  }
+}}</h2>

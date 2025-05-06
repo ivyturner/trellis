@@ -1,67 +1,82 @@
 ---
 import Base from "~/layouts/Base.astro";
 import Header from "~/components/ui/Header.astro";
-import Date from "~/components/util/Date.astro";
 import Prose from "~/components/ui/Prose.astro";
 import { noteTitleConstructor } from "~/lib/metadata";
 import StyledLink from "~/components/util/StyledLink.astro";
+import Title from "~/components/notes/Title.astro";
 
 interface Props {
   title?: string | undefined;
   exturl?: string | undefined;
   icon: string;
   date: Date;
+  tags: Array<string>;
 }
 
-const { title, exturl, icon, date } = Astro.props;
+const { title, exturl, icon, date, tags }: Props = Astro.props;
 ---
 
 <Base title={noteTitleConstructor(title, date)}>
   <Header />
-  <div
-    class="bg-light-bg-2 dark:bg-dark-bg-2 w-fit p-4 pt-0.5 rounded-br-3xl rounded-tl-3xl"
-  >
-    <h2 class="text-xl font-bold mt-6">
-      <i class={`${icon} mr-1 tx-light-pu dark:text-dark-pu`}></i>
-      {
-        () => {
-          if (title) {
-            return (
-              <span class="font-bold">
-                A note titled {title} (<Date showTime date={date} />)
-              </span>
-            );
-          } else {
-            return (
-              <span class="font-bold">
-                A note from
-                <Date showTime date={date} />
-              </span>
-            );
-          }
-        }
-      }
-    </h2>
-    <>
-      <p class="ml-4 mt-3 mb-3">
+  <main>
+    <div
+      class="parent bg-light-ui dark:bg-dark-ui w-fit min-w-48 p-4 border-2 border-light-ui-2 dark:border-dark-ui-2 rounded-br-3xl rounded-tl-3xl"
+    >
+      <div class="note-icon-area h-8">
+        <i class={`${icon} tx-light-pu dark:text-dark-pu`}></i>
+      </div>
+      <div class="h-8 note-title-area font-bold">
+        <Title date={date} title={title} />
+      </div>
+      <div class="note-content-area">
         {
           exturl && (
             <StyledLink
               href={exturl}
               icon="fa-solid fa-arrow-up-right-from-square"
+              xstyle="mt-0 mb-1"
             >
               {exturl}
             </StyledLink>
           )
         }
-      </p>
-      <Prose>
-        <slot />
-      </Prose>
-    </>
-    <hr class="w-[500px]" />
-    <StyledLink href="/notes" icon="fa-solid fa-arrow-left">
-      See more notes
-    </StyledLink>
-  </div>
+        <div class="text-xl my-2">
+          <Prose>
+            <slot />
+          </Prose>
+        </div>
+        {
+          (tags ?? []).map((tag) => (
+            <a
+              class="bg-light-pu dark:bg-dark-pu hover:bg-light-ma hover:dark:bg-dark-ma transition-colors text-white px-1 py-0.5 mr-2 last:mr-0 rounded-md text-center inline-block"
+              href={`/blog/tags/${tag}`}
+            >
+              {tag}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </main>
 </Base>
+
+<style>
+  .parent {
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    grid-template-rows: 1fr 2.5fr;
+    grid-column-gap: 0px;
+    grid-row-gap: calc(var(--spacing) * 2);
+  }
+
+  .note-icon-area {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+  .note-content-area {
+    grid-area: 2 / 1 / 3 / 3;
+  }
+  .note-title-area {
+    grid-area: 1 / 2 / 2 / 3;
+  }
+</style>

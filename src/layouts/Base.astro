@@ -11,7 +11,7 @@ const { title, date, description } = Astro.props;
 
 <html class="font-sans bg-light-bg text-light-tx dark:bg-dark-bg dark:text-dark-tx">
   <Head title={title} date={date} description={description} />
-  <body class="pl-1 md:px-24 sm:pt-2 md:pt-6">
+  <body class="md:px-24">
     <ClientRouter />
     <SizeWarning />
     <slot />

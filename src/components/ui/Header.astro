@@ -1,15 +1,22 @@
 ---
 import Navigation from "./Navigation.astro";
 import conf from "~/site.config";
-
-let headertext = conf.site.title;
-let headerurl = "/";
+let path;
+if (Astro.url.pathname == "/blog") {
+  path = "/blog";
+}
 ---
 
-<header class="md:flex md:justify-between md:items-center mb-4">
-	<h1 class="text-2xl font-bold sm my-2">
-		<i class="fa-solid fa-star mr-2"></i>
-		<a href={headerurl}>{headertext}</a>
-	</h1>
-	<Navigation />
+<header
+  class="md:flex md:justify-between md:items-center text-balance my-4 py-2"
+>
+  <h1 class="text-2xl font-bold">
+    <i class="fa-solid fa-star mr-2"></i>
+    <a href="/">
+      {conf.site.title}<span class="text-light-tx-2 dark:text-dark-tx-2"
+        >{path}</span
+      >
+    </a>
+  </h1>
+  <Navigation />
 </header>

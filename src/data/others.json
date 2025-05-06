@@ -3,7 +3,11 @@
         {
             "l": "https://rknight.me",
             "n": "Robb Knight",
-            "b": ""
+            "b": "https://rknight.me/assets/img/buttons/robbknight.gif"
+        },
+        {
+            "l": "https://byemc.xyz",
+            "n": "Bye"
         }
     ]
 }
