@@ -1,7 +1,8 @@
 ---
 import Page from "~/layouts/Page.astro";
-
+import { Image } from "astro:assets";
 import others from "~/data/others.json";
+import StyledLink from "~/components/util/StyledLink.astro";
 ---
 
 <Page
@@ -10,7 +11,15 @@ import others from "~/data/others.json";
   icon="fa-solid fa-users"
 >
   <h3>Friends</h3>
-  {others.friends.map(() => {
-    
-  })}
+  {
+    others.friends.map((p) => {
+      if (p.b) {
+        return <a href={p.l}><Image src={p.b} width="88" height="31" alt={p.n} /></a>;
+      } else {
+        return (
+          <StyledLink xstyle="my-2" href={p.l}>{p.n}</StyledLink>
+        );
+      }
+    })
+  }
 </Page>

@@ -45,7 +45,6 @@ const headerLinks = [
         <i class={`${link.icon} mr-0.5 text-sm`} />
         <a
           href={link.href}
-          aria-current={Astro.url.pathname === link.href ? "page" : undefined}
           class="underline decoration-wavy underline-offset-4 decoration-1.5
         decoration-light-pu dark:decoration-dark-pu"
         >
@@ -54,5 +53,7 @@ const headerLinks = [
       </span>
     ))
   }
-  <a href="/meta/subscribe"><i class="fa-solid fa-rss text-light-or dark:text-dark-or"></i></a>
+  <a href="/meta/subscribe">
+    <i class="fa-solid fa-rss text-light-or dark:text-dark-or"></i>
+  </a>
 </nav>

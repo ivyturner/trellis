@@ -24,4 +24,4 @@ laker.tech is my old personal site domain and redirects here for posterity / so 
 ivy.rs is bought through [istanco.net](https://istanco.net) as Porkbun doesnt support .rs domains (yet?)
 All of my other domains are bought through [Porkbun](https://porkbun.com).
 
-DNS is hosted by [deSEC.io](https://desec.io) and controlled by [DNSControl](https://dnscontrol.org)
+DNS is hosted by [deSEC.io](https://desec.io) and controlled by [DNSControl](https://dnscontrol.org).

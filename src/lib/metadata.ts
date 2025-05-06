@@ -1,4 +1,5 @@
 import conf from "~/site.config";
+import { formattedDate } from "./date";
 let siteName = conf.site.title;
 let siteDescription = conf.site.description;
 
@@ -14,5 +15,5 @@ export const descriptionConstructor = (description: string) => {
 
 export const noteTitleConstructor = (title: string | undefined, date: Date) => {
 	if (title) return `A note titled ${title}`;
-	return `A note from ${date.toLocaleDateString()}`;
+	return `A note from ${formattedDate(date, true)}`;
 };

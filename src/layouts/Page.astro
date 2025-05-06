@@ -19,7 +19,7 @@ const { title, description, icon, date, back, backLabel } = Astro.props;
 <Layout title={title} description={description} date={date}>
   <div>
     <Header />
-    <main class="pr-48 lg:pl-1">
+    <main class="ml-8">
       <Strapline title={title} description={description} icon={icon} date={date} back={back} backLabel={backLabel} />
       <slot />
     </main>

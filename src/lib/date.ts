@@ -1,13 +1,19 @@
+function checkDate(input: string | Date): Date {
+  if (typeof input === "string") {
+    return convertStringToDate(input);
+  } else {
+    return input;
+  }
+}
 
-// function checkDate(date: Date | string): Date {
-//   if (typeof date === Date)
-// }
-
+function convertStringToDate(input: string): Date {
+  return new globalThis.Date(input);
+}
 export function formattedDate(date: Date, showTime: boolean): string {
     const options: Intl.DateTimeFormatOptions = {
       year: "numeric",
-      month: "long",
-      day: "numeric",
+      month: "short",
+      day: "2-digit",
     };
 
     if (showTime) {

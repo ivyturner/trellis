@@ -1,5 +1,6 @@
 ---
 import Page from "~/layouts/Page.astro";
+import { getMinifluxFeedCount } from "~/lib/miniflux";
 ---
 
 <Page title="Subscribe" description="hit that bell gamers" icon="fa-solid fa-rss">
@@ -21,4 +22,6 @@ import Page from "~/layouts/Page.astro";
       class="link">Mastodon</a
     > & <a href="https://bsky.app/profile/ivy.rs" class="link">Bluesky</a>.
   </p>
+
+  I subscribe to {getMinifluxFeedCount()} feeds.
 </Page>
