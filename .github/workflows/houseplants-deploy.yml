@@ -25,7 +25,7 @@ jobs:
           TAILSCALE_IP="houseplants" # Replace with your VPS Tailscale IP
 
           # SSH into the VPS and deploy
-          ssh -o StrictHostKeyChecking=no "deploy@${TAILSCALE_IP}" << 'EOF'
+          ssh -o StrictHostKeyChecking=no "root@${TAILSCALE_IP}" << 'EOF'
           cd /opt/ivy.rs # Replace with the project directory on the VPS
           git pull origin main
           pnpm install # Adjust this if you're using a different build tool
