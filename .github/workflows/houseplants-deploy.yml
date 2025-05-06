@@ -22,7 +22,7 @@ jobs:
         shell: bash
         run: |
           # Add the Tailscale IP of your VPS
-          TAILSCALE_IP="100.64.20.2" # Replace with your VPS Tailscale IP
+          TAILSCALE_IP="houseplants" # Replace with your VPS Tailscale IP
 
           # SSH into the VPS and deploy
           ssh -o StrictHostKeyChecking=no "deploy@${TAILSCALE_IP}" << 'EOF'
