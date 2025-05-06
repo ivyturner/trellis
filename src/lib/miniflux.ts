@@ -15,5 +15,5 @@ export async function getMinifluxFeedCount(): Promise<number> {
 }
 
 export async function getFeedsByCategory(id: number): Promise<Object> {
-  
+  return Promise<{}> //! get to this later
 }
