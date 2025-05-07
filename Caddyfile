@@ -1,6 +1,6 @@
 # this will only work on my vps.. sorry lol
 
-http://localhost:9000 {
+ivy.rs, www.ivy.rs {
 	root * ./dist
 	file_server
 
