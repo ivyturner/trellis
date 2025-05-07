@@ -31,6 +31,7 @@ RUN pnpm prune --prod
 
 RUN chmod +x trellis.sh 
 RUN ./trellis.sh
+RUN pwd && ls
 
 # 3) Final image: Caddy
 FROM caddy:2.7.4-alpine
