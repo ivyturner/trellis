@@ -34,7 +34,7 @@ RUN ./trellis.sh
 RUN pwd && ls
 
 # 3) Final image: Caddy
-FROM caddy:2.7.4-alpine
+FROM caddy:2.10.0-alpine
 
 # Copy built files into Caddy's default web root (/srv)
 COPY --from=build --chown=caddy:caddy /app/dist /srv

@@ -1,6 +1,6 @@
 # build output
 dist/
-redirects.caddyfile
+# redirects.caddyfile
 robots.caddyfile
 
 # generated types
