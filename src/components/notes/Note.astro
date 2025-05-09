@@ -1,0 +1,80 @@
+---
+import Prose from "~/components/ui/Prose.astro";
+import StyledLink from "~/components/util/StyledLink.astro";
+import Title from "~/components/notes/Title.astro";
+
+interface Props {
+  title?: string | undefined;
+  exturl?: string | undefined;
+  icon: string;
+  date: Date;
+  tags: Array<string>;
+}
+
+const { title, exturl, icon, date, tags }: Props = Astro.props;
+---
+
+<div
+  class="parent bg-light-ui dark:bg-dark-ui w-fit min-w-48 p-4 border-2 border-light-ui-2 dark:border-dark-ui-2 rounded-br-3xl rounded-tl-3xl"
+>
+  <div class="note-icon-area h-8">
+    <i class={`${icon} text-xl tx-light-pu dark:text-dark-pu`}></i>
+  </div>
+
+  <div class="h-8 note-title-area font-bold">
+    <Title date={date} title={title} />
+  </div>
+
+  <div class="note-content-area">
+    {
+      exturl && (
+        <StyledLink
+          href={exturl}
+          icon="fa-solid fa-arrow-up-right-from-square"
+          xstyle="mt-0 mb-1"
+        >
+          {exturl}
+        </StyledLink>
+      )
+    }
+
+    <div class="text-xl my-2">
+      <Prose>
+        <slot />
+      </Prose>
+    </div>
+
+    {
+      (tags ?? []).map((tag) => (
+        <a
+          class="bg-light-pu dark:bg-dark-pu hover:bg-light-ma hover:dark:bg-dark-ma transition-colors text-white px-1 py-0.5 mr-2 last:mr-0 rounded-md text-center inline-block"
+          href={`/blog/tags/${tag}`}
+        >
+          {tag}
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .parent {
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    grid-template-rows: 1fr 2.5fr;
+    grid-column-gap: 0px;
+    grid-row-gap: calc(var(--spacing) * 2);
+  }
+
+  .note-icon-area {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+
+  .note-content-area {
+    grid-area: 2 / 1 / 3 / 3;
+  }
+
+  .note-title-area {
+    grid-area: 1 / 2 / 2 / 3;
+  }
+</style>

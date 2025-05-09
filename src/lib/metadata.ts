@@ -1,19 +1,24 @@
 import conf from "~/site.config";
 import { formattedDate } from "./date";
+
 let siteName = conf.site.title;
 let siteDescription = conf.site.description;
 
-export const titleConstructor = (title: string) => {
+function template(input: string): string {
+	return `${input} | ${siteName}`
+}
+
+export function titleConstructor(title: string | undefined): string {
 	if (!title) return siteName;
-	return `${title} | ${siteName}`;
+	return template(title);
 };
 
-export const descriptionConstructor = (description: string) => {
+export function descriptionConstructor(description: string) {
 	if (!description) return siteDescription;
 	return `${description}`;
 };
 
-export const noteTitleConstructor = (title: string | undefined, date: Date) => {
-	if (title) return `A note titled ${title}`;
-	return `A note from ${formattedDate(date, true)}`;
+export function noteTitleConstructor(title: string | undefined, date: Date) {
+	if (title) return template(`A note titled ${title}`);
+	return template(`A note from ${formattedDate(date, true)}`);
 };

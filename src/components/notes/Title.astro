@@ -6,13 +6,13 @@ const { title, date } = Astro.props;
 <h2>{()=>{
     if (title) {
     return (
-      <span>
+      <span class="text-xl">
         A note titled {title} (<Date showTime date={date} />)
       </span>
     );
   } else {
     return (
-      <span>
+      <span class="text-lg">
         A note from
         <Date showTime date={date} />
       </span>
