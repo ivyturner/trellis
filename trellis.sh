@@ -21,5 +21,5 @@ gen_robots () {
   jq -r '.blockedCrawlers | to_entries | "respond \(.value) "Access Denied" 403';
 }
 
-gen_robots
+# gen_robots #! fix
 gen_redirects
