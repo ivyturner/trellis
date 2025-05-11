@@ -3,7 +3,7 @@ name: Deploy on Houseplants
 on:
   push:
     branches:
-      - main-fuckthis
+      - main
 
 jobs:
   deploy:
