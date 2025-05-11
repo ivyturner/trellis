@@ -1,7 +1,7 @@
 # this will only work on my vps.. sorry lol
 
-http://localhost:9000 {
-	root * ./dist
+ivy.houseplants.cloud {
+	root * /opt/sites/ivy.rs/dist
 	file_server
 
 	 handle_errors {
@@ -11,5 +11,10 @@ http://localhost:9000 {
         rewrite @404 /404.html
         file_server
 	}
+
     import ./redirects.caddyfile
+
+    log {
+		output file /var/log/ivy.rs.log
+	}
 }
