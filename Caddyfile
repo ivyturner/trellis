@@ -1,6 +1,6 @@
 # this will only work on my vps.. sorry lol
 
-ivy.houseplants.cloud {
+ivy.rs {
 	root * /opt/sites/ivy.rs/dist
 	file_server
 
@@ -17,4 +17,8 @@ ivy.houseplants.cloud {
     log {
 		output file /var/log/ivy.rs.log
 	}
+}
+
+www.ivy.rs {
+    redir * https://ivy.rs
 }
